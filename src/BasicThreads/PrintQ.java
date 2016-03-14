@@ -5,7 +5,7 @@ public class PrintQ implements Runnable{
 	@Override
 	public void run() {
 		for (int i = 0; i < 30; i++) {
-			System.out.println("Q");
+			System.out.print("Q");
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {

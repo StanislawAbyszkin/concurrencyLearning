@@ -14,7 +14,7 @@ public class MyMain {
 			e.printStackTrace();
 		}
 		for (int i = 0; i < 200; i++) {
-			System.out.println("R");
+			System.out.print("R");
 		}
 	}
 

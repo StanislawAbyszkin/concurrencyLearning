@@ -1,30 +1,27 @@
 package petersonAlgorithm;
 
 public class Process2 extends Thread {
-	int last;
-	boolean wantP, wantQ;
+	Controller controller;
 
-	public Process2(int setLast, boolean wantP, boolean wantQ) {
-		this.last = setLast;
-		this.wantP = wantP;
-		this.wantQ = wantQ;
+	public Process2(Controller ctrl) {
+		this.controller = ctrl;
 	}
 
 	public void run() {
-
-		// non-critical section here
 		while (true) {
-			wantQ = true;
-			last = 2;
-			if (wantP == false || last == 1) {
+			// non-critical section here
+
+			controller.setWantQ(true);
+			controller.setLast(2);
+
+			if (!controller.isWantP() || controller.getLast() == 1) {
 				System.out.println("Critical section of process 2 was accessed.");
-				wantQ = false;
-				
 				try {
-					Thread.sleep(150);
+					Thread.sleep(50);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+				controller.setWantQ(false);
 			}
 		}
 	}
